@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/ASU/CSE_310/Projects/Projects1/heap.h
+
+E:/ASU/CSE_310/Projects/Projects1/util.cpp
+iostream
+-
+string
+-
+ctype.h
+-
+fstream
+-
+heap.h
+E:/ASU/CSE_310/Projects/Projects1/heap.h
+
