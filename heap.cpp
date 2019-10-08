@@ -12,10 +12,17 @@ Heap Initialize(int s){
     return h;
 }
 
-void BuildHeap(Heap h, ELEMENT arr[], int size){
+void BuildHeap(Heap *h, ELEMENT arr[], int size){
     for (int idx = 0; idx < size; idx++){
-        h.pointer[idx].key = arr[idx].key;
+        h->pointer[idx].key = arr[idx].key;
+        h->size += 1;
     }
+
+    for (int i = size / 2; i >= 0; i--){
+        constructMinHeap(*h, 1);
+    }
+
+
 }
 
 void Insert(Heap *h, int flag, int key){
@@ -26,9 +33,9 @@ void Insert(Heap *h, int flag, int key){
     if (h->size == h->capacity){
         cout << "The capacity value is not big enough to hold more keys.";
     } else{
-        int size = h->size;
-        h->pointer[size].key = key;
         h->size += 1;
+        int size = h->size - 1;
+        h->pointer[size].key = key;
 
         while (size != 0 && h->pointer[parentIdx(size)].key > h->pointer[size].key){
             swap(&h->pointer[size].key, &h->pointer[parentIdx(size)].key);

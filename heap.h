@@ -13,7 +13,7 @@ struct ELEMENT{
 
 
 Heap Initialize (int n);
-void BuildHeap(Heap h, ELEMENT arr[], int n);
+void BuildHeap(Heap *h, ELEMENT arr[], int n);
 void Insert(Heap *h, int flag, int key);
 int DeleteMin(Heap h, int flag);
 void DecreaseKey(Heap h, int flag, int index, int value);

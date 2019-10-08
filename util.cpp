@@ -10,20 +10,20 @@ void readFromTxt(Heap *h){
 
     ifstream infile("HEAPinput.txt");
     if (infile.good()) {
-        int i = 1;
+        int i = 0;
         int size;
 
         infile >> size;
-        int numArr[size];
-        //ELEMENT arr[size];
-        while (i <= size){
-            infile >> numArr[i];
-            //infile >> arr[i].key;
-            Insert(h, 1, numArr[i]);
+        //int numArr[size];
+        ELEMENT arr[size];
+        while (i < size){
+            //infile >> numArr[i];
+            infile >> arr[i].key;
+            //Insert(h, 2, numArr[i]);
             i++;
         }
 
-        //BuildHeap(h, arr, size);
+        BuildHeap(h, arr, size);
         infile.close();
 
     } else{
@@ -177,15 +177,15 @@ void swap(int* x, int* y){
 }
 
 int parentIdx(int num){
-    return (num - 1) / 2;
+    return num / 2;
 }
 
 int leftNode(int num){
-    return 2 * num + 1;
+    return 2 * num;
 }
 
 int rightNode(int num){
-    return 2 * num + 2;
+    return (2 * num) + 1;
 }
 
 void constructMinHeap(Heap h, int num){
@@ -194,11 +194,11 @@ void constructMinHeap(Heap h, int num){
     int right = rightNode(num);
     int min = num;
 
-    if (left < size && h.pointer[left].key < h.pointer[num].key){
+    if (left <= size && h.pointer[left].key < h.pointer[num].key){
         min = left;
     }
 
-    if (right < size && h.pointer[right].key < h.pointer[min].key){
+    if (right <= size && h.pointer[right].key < h.pointer[min].key){
         min = right;
     }
 
