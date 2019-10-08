@@ -178,11 +178,11 @@ int parentIdx(int num){
 }
 
 int leftNode(int num){
-    return 2 * num + 1;
+    return 2 * num;
 }
 
 int rightNode(int num){
-    return (2 * num) + 2;
+    return (2 * num) + 1;
 }
 
 void constructMinHeap(Heap h, int num){
@@ -223,14 +223,14 @@ void constructMinHeap(ELEMENT arr[], int size, int num){
         min = right;
     }
 
-    if(min != num){
+    if (min != num){
         swap(&arr[num].key, &arr[min].key);
         constructMinHeap(arr, size, num);
     }
 }
 
 ELEMENT* buildHelper (ELEMENT arr[], int size){
-    int i = size / 2 - 1;
+    int i = size / 2;
     while (i >= 0){
         constructMinHeap(arr, size, i);
         i--;
