@@ -13,16 +13,12 @@ Heap Initialize(int s){
 }
 
 void BuildHeap(Heap *h, ELEMENT arr[], int size){
-    for (int idx = 0; idx < size; idx++){
+    arr = buildHelper(arr, size);
+
+    for (int idx = 0; idx < size; idx++) {
         h->pointer[idx].key = arr[idx].key;
         h->size += 1;
     }
-
-    for (int i = size / 2; i >= 0; i--){
-        constructMinHeap(*h, 1);
-    }
-
-
 }
 
 void Insert(Heap *h, int flag, int key){

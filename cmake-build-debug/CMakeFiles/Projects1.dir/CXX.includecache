@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+E:/ASU/CSE_310/Projects/Projects1/heap.cpp
+iostream
+-
+heap.h
+E:/ASU/CSE_310/Projects/Projects1/heap.h
+util.h
+E:/ASU/CSE_310/Projects/Projects1/util.h
+
 E:/ASU/CSE_310/Projects/Projects1/heap.h
 
 E:/ASU/CSE_310/Projects/Projects1/util.cpp
@@ -17,6 +25,10 @@ ctype.h
 -
 fstream
 -
+heap.h
+E:/ASU/CSE_310/Projects/Projects1/heap.h
+
+E:/ASU/CSE_310/Projects/Projects1/util.h
 heap.h
 E:/ASU/CSE_310/Projects/Projects1/heap.h
 

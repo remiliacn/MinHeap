@@ -206,13 +206,36 @@ void constructMinHeap(Heap h, int num){
         constructMinHeap(h, min);
     }
 }
-/*void ELEMENT::readFromFile() {
-    ifstream infile("HEAPinput.txt");
-    string line;
-    if (infile.good()){
-        while (getline(infile, line)){
-            istringstream iss(line);
 
-        }
+
+void constructMinHeap(ELEMENT arr[], int size, int num){
+    int left = leftNode(num);
+    int right = rightNode(num);
+    int min;
+
+    if (left < size && arr[left].key < arr[num].key){
+        min = left;
+    } else{
+        min = num;
     }
-}*/
+
+    if (right < size && arr[right].key < arr[min].key){
+        min = right;
+    }
+
+    if(min != num){
+        swap(&arr[num].key, &arr[min].key);
+        constructMinHeap(arr, size, num);
+    }
+}
+
+ELEMENT* buildHelper (ELEMENT arr[], int size){
+    int i = size / 2 - 1;
+    while (i >= 0){
+        constructMinHeap(arr, size, i);
+        i--;
+    }
+
+    return arr;
+}
+

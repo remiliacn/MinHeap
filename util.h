@@ -9,5 +9,7 @@ int parentIdx(int num);
 int leftNode(int num);
 int rightNode(int num);
 void constructMinHeap(Heap h, int num);
+ELEMENT* buildHelper(ELEMENT arr[], int size);
+void constructMinHeap(ELEMENT arr[], int size, int num);
 
 #endif
