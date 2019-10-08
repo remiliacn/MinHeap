@@ -14,12 +14,9 @@ void readFromTxt(Heap *h){
         int size;
 
         infile >> size;
-        //int numArr[size];
         ELEMENT arr[size];
         while (i < size){
-            //infile >> numArr[i];
             infile >> arr[i].key;
-            //Insert(h, 2, numArr[i]);
             i++;
         }
 
@@ -181,24 +178,26 @@ int parentIdx(int num){
 }
 
 int leftNode(int num){
-    return 2 * num;
+    return 2 * num + 1;
 }
 
 int rightNode(int num){
-    return (2 * num) + 1;
+    return (2 * num) + 2;
 }
 
 void constructMinHeap(Heap h, int num){
     int size = h.size;
     int left = leftNode(num);
     int right = rightNode(num);
-    int min = num;
+    int min;
 
-    if (left <= size && h.pointer[left].key < h.pointer[num].key){
+    if (left < size && h.pointer[left].key < h.pointer[num].key){
         min = left;
+    } else{
+        min = num;
     }
 
-    if (right <= size && h.pointer[right].key < h.pointer[min].key){
+    if (right < size && h.pointer[right].key < h.pointer[min].key){
         min = right;
     }
 
