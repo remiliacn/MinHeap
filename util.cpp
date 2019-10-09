@@ -318,7 +318,7 @@ ELEMENT* buildHelper (ELEMENT arr[], int size){
     //Initialize the very last node position
     int i = size + 1;
     while (i >= 1){
-        //construct a min heap with recursion.
+        //construct a min heap with loop.
         constructMinHeap(arr, size + 1, i);
         i--;
     }

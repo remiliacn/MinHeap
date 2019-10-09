@@ -18,9 +18,9 @@ Heap Initialize(int s){
 }
 
 /**
- * This method is for building heap from the file.
+ * This method is for building heap from the file, depends on buildHelper().
  * @param h {Heap} -> heap element for adding data from ELEMENT array.
- * @param arr {ELEMENT} -> ELEMENT array, acquired from file.
+ * @param arr {ELEMENT} -> ELEMENT array, acquired from file, and will be processed in buildHelper().
  * @param size {int} -> acquired from reading file.
  */
 void BuildHeap(Heap *h, ELEMENT arr[], int size){
