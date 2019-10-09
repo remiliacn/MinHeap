@@ -48,25 +48,25 @@ void Insert(Heap *h, int flag, int key){
     }
 }
 
-int DeleteMin(Heap h, int flag){
+int DeleteMin(Heap *h, int flag){
     if (flag == 2){
-        printHeap(h);
+        printHeap(*h);
     }
 
-    int size = h.size;
+    int size = h->size;
     if (size == 0){
         cout << "There are no elements in heap to delete.";
         return -1;
     }
 
     if (size == 1){
-        h.size -= 1;
-        return h.pointer[0].key;
+        h->size -= 1;
+        return h->pointer[0].key;
     }
 
-    int tempMin = h.pointer[0].key; h.pointer[0].key = h.pointer[size - 1].key;
-    h.size -= 1;
-    constructMinHeap(h, 0);
+    int tempMin = h->pointer[0].key; h->pointer[0].key = h->pointer[size - 1].key;
+    h->size -= 1;
+    constructMinHeap(*h, 0);
     return tempMin;
 }
 
@@ -77,7 +77,7 @@ void DecreaseKey(Heap h, int flag, int index, int value){
 
     h.pointer[index].key = value;
     if (index > h.size){
-        cout << "There are only " << h.size << " in the heap. So this cannot be done.";
+        cout << "There are only " << h.size << " in the heap. So this cannot be done." << endl;
         return;
     }
     while (index != 0){

@@ -14,6 +14,9 @@ void readFromTxt(Heap *h){
         int size;
 
         infile >> size;
+        if (size > h->capacity){
+            cout << "Sorry this is not possible, since capacity is lower than the size" << endl;
+        }
         ELEMENT arr[size];
         while (i < size){
             infile >> arr[i].key;
@@ -122,7 +125,7 @@ int main(){
                     if (flag <= 0 || flag > 2){
                         cout << "Illegal flag input." << endl;
                     } else{
-                        int tempKey = DeleteMin(h, flag);
+                        int tempKey = DeleteMin(&h, flag);
                         if (tempKey != -1){
                             cout << "deleted key was: " << tempKey << endl;
                         }
