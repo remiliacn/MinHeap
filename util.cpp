@@ -97,7 +97,7 @@ int main(){
                         cout << "Invalid input or arguments are not enough." << endl;
                     } else{
                         flag = str[2] - '0';
-                        if (isdigit(flag)){
+                        if ((flag == 2 || flag == 1)){
                             try{
                                 key = stoi(str.substr(4, length));
                                 Insert(&h, flag, key);
@@ -106,6 +106,8 @@ int main(){
                             catch (invalid_argument &) {
                                 cout << "Entered key seems to not be a number. Try again." << endl;
                             }
+                        } else{
+                            cout << "variable \"flag\" is illegal.";
                         }
                     }
                 }
