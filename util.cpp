@@ -209,6 +209,10 @@ void constructMinHeap(Heap h, int num){
 
 
 void constructMinHeap(ELEMENT arr[], int size, int num){
+    if (num < 0){
+        return;
+    }
+
     int left = leftNode(num);
     int right = rightNode(num);
     int min;
@@ -225,12 +229,17 @@ void constructMinHeap(ELEMENT arr[], int size, int num){
 
     if(min != num){
         swap(&arr[num].key, &arr[min].key);
-        constructMinHeap(arr, size, num);
+    }
+
+    if (num % 2 == 0){
+        constructMinHeap(arr, size, (num - 2) / 2);
+    } else{
+        constructMinHeap(arr, size, (num - 1) / 2);
     }
 }
 
 ELEMENT* buildHelper (ELEMENT arr[], int size){
-    int i = size / 2 - 1;
+    int i = size - 1;
     while (i >= 0){
         constructMinHeap(arr, size, i);
         i--;
