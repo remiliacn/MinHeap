@@ -36,7 +36,7 @@ void readFromTxt(Heap *h){
         infile.close();
 
     } else{
-        cout << "File \"HEAPinput.txt\" does not exist in the current directory.";
+        cout << "File \"HEAPinput.txt\" does not exist in the current directory." << endl;
     }
 }
 
