@@ -52,8 +52,8 @@ int main(){
         //Get command's length.
         length = str.length();
         //Fetch the command.
-        command = str[0];
 
+        command = str[0];
         switch (command){
             case '\t':
             case '\n':
@@ -62,8 +62,13 @@ int main(){
             //Exit the program.
             case 'S':
             case 's':
-                cout << "Program will shut down now." << endl;
-                exit(1);
+                if (length != 1){
+                    cout << "Invalid command!!" << endl;
+                    break;
+                } else{
+                    cout << "Program will shut down now." << endl;
+                    exit(1);
+                }
 
             case 'C':
             case 'c':
@@ -91,7 +96,7 @@ int main(){
             case 'R':
             case 'r':
                 //Check the syntax.
-                if (str.length() != 1){
+                if (length != 1){
                     cout << "Invalid Input!!!" << endl;
                     break;
                 } else{
@@ -102,12 +107,15 @@ int main(){
             case 'W':
             case 'w':
                 //Check if heap is initialized or not.
-                if (!init){
-                    cout << "The heap is not initialized yet, please initialize first!" << endl;
-                } else{
-                    printHeap(h);
+                if (length != 1){
+                    cout << "invalid input." << endl;
+                } else {
+                    if (!init) {
+                        cout << "The heap is not initialized yet, please initialize first!" << endl;
+                    } else {
+                        printHeap(h);
+                    }
                 }
-
                 break;
 
             case 'I':
@@ -120,20 +128,19 @@ int main(){
                     } else{
                         flag = str[2] - '0';
                         //check if flag argument is legal.
-                        if ((flag == 2 || flag == 1)){
+                        if ((flag == 2 || flag == 1) && str[3] == ' '){
                             try{
                                 key = stoi(str.substr(4, length));
                                 Insert(&h, flag, key);
 
-                                //check if the key input is legal.
+                            //check if the key input is legal.
                             } catch (invalid_argument &) {
                                 cout << "Entered key seems to not be a number. Try again." << endl;
                             } catch (out_of_range &){
                                 cout << "Key is too big!!!!" << endl;
                             }
-
                         } else{
-                            cout << "variable \"flag\" is illegal.";
+                            cout << "variable \"flag\" is illegal." << endl;
                         }
                     }
                 }
@@ -146,7 +153,7 @@ int main(){
                     cout << "You need to initialize the heap before using this function." << endl;
                 } else{
                     flag = str[2] - '0';
-                    if (flag <= 0 || flag > 2){
+                    if ((flag == 2 || flag == 1) && str[3] == ' '){
                         cout << "Illegal flag input." << endl;
                     } else{
                         int tempKey = DeleteMin(&h, flag);
@@ -167,9 +174,9 @@ int main(){
                         cout << "Invalid syntax, please check again." << endl;
                     } else{
                         flag = str[2] - '0';
-                        if (flag == 1 || flag == 2){
+                        if ((flag == 2 || flag == 1) && str[3] == ' '){
                             if (flag <= 0 || flag > 2){
-                                cout << "Illegal flag input.";
+                                cout << "Illegal flag input." << endl;
                             } else{
                                 str = str.substr(4, length);
                                 int delimiterPos = str.find(' ');
@@ -179,12 +186,11 @@ int main(){
                                     int v = stoi(str.substr(delimiterPos + 1, str.length()));
                                     //Pass the args into DecreaseKey()
                                     DecreaseKey(h, flag, index, v);
-                                }
-
-                                catch (invalid_argument &){
+                                } catch (invalid_argument &){
                                     cout << "Either the input of index, or the input of value is not a number." << endl;
                                 }
                             }
+
                         } else{
                             cout << "argument \"flag\" is not a number" << endl;
                         }
