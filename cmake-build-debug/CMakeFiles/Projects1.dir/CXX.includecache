@@ -6,17 +6,9 @@
 
 #IncludeRegexTransform: 
 
-E:/ASU/CSE_310/Projects/Projects1/heap.cpp
-iostream
--
-heap.h
-E:/ASU/CSE_310/Projects/Projects1/heap.h
-util.h
-E:/ASU/CSE_310/Projects/Projects1/util.h
+C:/Users/remilia/CLionProjects/MinHeap/heap.h
 
-E:/ASU/CSE_310/Projects/Projects1/heap.h
-
-E:/ASU/CSE_310/Projects/Projects1/util.cpp
+C:/Users/remilia/CLionProjects/MinHeap/util.cpp
 iostream
 -
 string
@@ -26,9 +18,5 @@ ctype.h
 fstream
 -
 heap.h
-E:/ASU/CSE_310/Projects/Projects1/heap.h
-
-E:/ASU/CSE_310/Projects/Projects1/util.h
-heap.h
-E:/ASU/CSE_310/Projects/Projects1/heap.h
+C:/Users/remilia/CLionProjects/MinHeap/heap.h
 

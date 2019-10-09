@@ -27,16 +27,24 @@ void Insert(Heap *h, int flag, int key){
     }
 
     if (h->size == h->capacity){
-        cout << "The capacity value is not big enough to hold more keys.";
-    } else{
-        h->size += 1;
-        int size = h->size - 1;
-        h->pointer[size].key = key;
+        //cout << "The capacity value is not big enough to hold more keys.";
+        h -> capacity *= 2;
+        h -> pointer = (ELEMENT * )realloc(h -> pointer, h -> capacity * 2);
 
-        while (size != 0 && h->pointer[parentIdx(size)].key > h->pointer[size].key){
-            swap(&h->pointer[size].key, &h->pointer[parentIdx(size)].key);
-            size = parentIdx(size);
-        }
+    }
+
+    h->size += 1;
+    int size = h->size - 1;
+    h->pointer[size].key = key;
+
+    while (size != 0 && h->pointer[parentIdx(size)].key > h->pointer[size].key){
+        swap(&h->pointer[size].key, &h->pointer[parentIdx(size)].key);
+        size = parentIdx(size);
+
+    }
+
+    if (flag == 2){
+        printHeap(*h);
     }
 }
 

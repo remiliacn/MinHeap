@@ -31,9 +31,9 @@ void readFromTxt(Heap *h){
 int main(){
     string str;
     char command;
-    struct Heap h;
+    struct Heap h = Heap();
     bool init = false;
-    struct ELEMENT element;
+    //struct ELEMENT element;
     int size, flag, key, length;
     while (1){
         getline(cin, str);
@@ -176,7 +176,7 @@ void swap(int* x, int* y){
 }
 
 int parentIdx(int num){
-    return num / 2;
+    return (num - 1) / 2;
 }
 
 int leftNode(int num){
