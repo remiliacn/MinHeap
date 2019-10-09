@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <ctype.h>
 #include <fstream>
 #include "heap.h"
 
@@ -253,3 +252,4 @@ ELEMENT* buildHelper (ELEMENT arr[], int size){
 
     return arr;
 }
+
