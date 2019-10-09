@@ -15,7 +15,9 @@ void readFromTxt(Heap *h){
         infile >> size;
         if (size > h->capacity){
             cout << "Sorry this is not possible, since capacity is lower than the size" << endl;
+            return;
         }
+
         ELEMENT arr[size];
         while (i < size){
             infile >> arr[i].key;
@@ -57,7 +59,7 @@ int main(){
                     cout << "invalid input, no size was given." << endl;
                 } else{
                     try{
-                        string rest = str.substr(2);
+                        string rest = str.substr(2, length);
                         size = stoi(rest);
                         h = Initialize(size);
                         init = true;
@@ -187,10 +189,13 @@ int leftNode(int num){
 }
 
 int rightNode(int num){
-    return (2 * num) + 2;
+    return 2 * num + 2;
 }
 
 void constructMinHeap(Heap h, int num){
+    if (num < 0)
+        return;
+
     int size = h.size;
     int left = leftNode(num);
     int right = rightNode(num);
@@ -208,24 +213,26 @@ void constructMinHeap(Heap h, int num){
 
     if (min != num){
         swap(&h.pointer[num].key, &h.pointer[min].key);
-        constructMinHeap(h, min);
+    }
+
+    if (num % 2 == 0){
+        constructMinHeap(h, (num - 2) / 2);
+    } else{
+        constructMinHeap(h, (num - 1) / 2);
     }
 }
 
 
 void constructMinHeap(ELEMENT arr[], int size, int num){
-    if (num < 0){
+    if (num < 0)
         return;
-    }
 
     int left = leftNode(num);
     int right = rightNode(num);
-    int min;
+    int min = num;
 
-    if (left < size && arr[left].key < arr[num].key){
+    if (left < size && arr[left].key < arr[min].key){
         min = left;
-    } else{
-        min = num;
     }
 
     if (right < size && arr[right].key < arr[min].key){

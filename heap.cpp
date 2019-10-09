@@ -40,7 +40,6 @@ void Insert(Heap *h, int flag, int key){
     while (size != 0 && h->pointer[parentIdx(size)].key > h->pointer[size].key){
         swap(&h->pointer[size].key, &h->pointer[parentIdx(size)].key);
         size = parentIdx(size);
-
     }
 
     if (flag == 2){

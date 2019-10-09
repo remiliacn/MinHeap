@@ -13,8 +13,6 @@ iostream
 -
 string
 -
-ctype.h
--
 fstream
 -
 heap.h
