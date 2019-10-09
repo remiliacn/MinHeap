@@ -39,7 +39,6 @@ int main(){
         getline(cin, str);
         length = str.length();
         command = str[0];
-        cout << "COMMAND: " << str << endl;
 
         switch (command){
             case '\t':
@@ -140,7 +139,7 @@ int main(){
                         cout << "Invalid syntax, please check again." << endl;
                     } else{
                         flag = str[2] - '0';
-                        if (isdigit(flag)){
+                        if (flag == 1 || flag == 2){
                             if (flag <= 0 || flag > 2){
                                 cout << "Illegal flag input.";
                             } else{
@@ -166,6 +165,8 @@ int main(){
             default:
                 cout << "Invalid command!!" << endl;
         }
+
+        cout << "COMMAND: " << str << endl;
     }
 }
 

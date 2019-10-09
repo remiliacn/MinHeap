@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/remilia/CLionProjects/MinHeap/heap.cpp
+iostream
+-
+heap.h
+C:/Users/remilia/CLionProjects/MinHeap/heap.h
+util.h
+C:/Users/remilia/CLionProjects/MinHeap/util.h
+
 C:/Users/remilia/CLionProjects/MinHeap/heap.h
 
 C:/Users/remilia/CLionProjects/MinHeap/util.cpp
@@ -17,6 +25,10 @@ ctype.h
 -
 fstream
 -
+heap.h
+C:/Users/remilia/CLionProjects/MinHeap/heap.h
+
+C:/Users/remilia/CLionProjects/MinHeap/util.h
 heap.h
 C:/Users/remilia/CLionProjects/MinHeap/heap.h
 

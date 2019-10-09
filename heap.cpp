@@ -76,6 +76,10 @@ void DecreaseKey(Heap h, int flag, int index, int value){
     }
 
     h.pointer[index].key = value;
+    if (index > h.size){
+        cout << "There are only " << h.size << " in the heap. So this cannot be done.";
+        return;
+    }
     while (index != 0){
         if (h.pointer[parentIdx(index)].key > h.pointer[index].key){
             swap(&h.pointer[index].key, &h.pointer[parentIdx(index)].key);
