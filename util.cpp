@@ -14,6 +14,9 @@ void readFromTxt(Heap *h){
         int size;
 
         infile >> size;
+        if (size > h->capacity){
+            cout << "Sorry this is not possible, since capacity is lower than the size" << endl;
+        }
         ELEMENT arr[size];
         while (i < size){
             infile >> arr[i].key;
@@ -31,15 +34,14 @@ void readFromTxt(Heap *h){
 int main(){
     string str;
     char command;
-    struct Heap h;
+    struct Heap h = Heap();
     bool init = false;
-    struct ELEMENT element;
+    //struct ELEMENT element;
     int size, flag, key, length;
     while (1){
         getline(cin, str);
         length = str.length();
         command = str[0];
-        cout << "COMMAND: " << str << endl;
 
         switch (command){
             case '\t':
@@ -97,7 +99,7 @@ int main(){
                         cout << "Invalid input or arguments are not enough." << endl;
                     } else{
                         flag = str[2] - '0';
-                        if (isdigit(flag)){
+                        if ((flag == 2 || flag == 1)){
                             try{
                                 key = stoi(str.substr(4, length));
                                 Insert(&h, flag, key);
@@ -106,6 +108,8 @@ int main(){
                             catch (invalid_argument &) {
                                 cout << "Entered key seems to not be a number. Try again." << endl;
                             }
+                        } else{
+                            cout << "variable \"flag\" is illegal.";
                         }
                     }
                 }
@@ -115,13 +119,13 @@ int main(){
             case 'D':
             case 'd':
                 if (!init){
-                        cout << "You need to initialize the heap before using this function." << endl;
+                    cout << "You need to initialize the heap before using this function." << endl;
                 } else{
                     flag = str[2] - '0';
                     if (flag <= 0 || flag > 2){
                         cout << "Illegal flag input." << endl;
                     } else{
-                        int tempKey = DeleteMin(h, flag);
+                        int tempKey = DeleteMin(&h, flag);
                         if (tempKey != -1){
                             cout << "deleted key was: " << tempKey << endl;
                         }
@@ -138,7 +142,7 @@ int main(){
                         cout << "Invalid syntax, please check again." << endl;
                     } else{
                         flag = str[2] - '0';
-                        if (isdigit(flag)){
+                        if (flag == 1 || flag == 2){
                             if (flag <= 0 || flag > 2){
                                 cout << "Illegal flag input.";
                             } else{
@@ -164,6 +168,8 @@ int main(){
             default:
                 cout << "Invalid command!!" << endl;
         }
+
+        cout << "COMMAND: " << str << endl;
     }
 }
 
@@ -174,15 +180,15 @@ void swap(int* x, int* y){
 }
 
 int parentIdx(int num){
-    return num / 2;
+    return (num - 1) / 2;
 }
 
 int leftNode(int num){
-    return 2 * num;
+    return 2 * num + 1;
 }
 
 int rightNode(int num){
-    return (2 * num) + 1;
+    return (2 * num) + 2;
 }
 
 void constructMinHeap(Heap h, int num){
@@ -209,6 +215,10 @@ void constructMinHeap(Heap h, int num){
 
 
 void constructMinHeap(ELEMENT arr[], int size, int num){
+    if (num < 0){
+        return;
+    }
+
     int left = leftNode(num);
     int right = rightNode(num);
     int min;
@@ -223,14 +233,19 @@ void constructMinHeap(ELEMENT arr[], int size, int num){
         min = right;
     }
 
-    if (min != num){
+    if(min != num){
         swap(&arr[num].key, &arr[min].key);
-        constructMinHeap(arr, size, num);
+    }
+
+    if (num % 2 == 0){
+        constructMinHeap(arr, size, (num - 2) / 2);
+    } else{
+        constructMinHeap(arr, size, (num - 1) / 2);
     }
 }
 
 ELEMENT* buildHelper (ELEMENT arr[], int size){
-    int i = size / 2;
+    int i = size - 1;
     while (i >= 0){
         constructMinHeap(arr, size, i);
         i--;
@@ -238,4 +253,3 @@ ELEMENT* buildHelper (ELEMENT arr[], int size){
 
     return arr;
 }
-
