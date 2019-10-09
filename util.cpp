@@ -222,7 +222,6 @@ void constructMinHeap(Heap h, int num){
     }
 }
 
-
 void constructMinHeap(ELEMENT arr[], int size, int num){
     if (num < 0)
         return;
@@ -241,12 +240,7 @@ void constructMinHeap(ELEMENT arr[], int size, int num){
 
     if(min != num){
         swap(&arr[num].key, &arr[min].key);
-    }
-
-    if (num % 2 == 0){
-        constructMinHeap(arr, size, (num - 2) / 2);
-    } else{
-        constructMinHeap(arr, size, (num - 1) / 2);
+        constructMinHeap(arr, size, min);
     }
 }
 
