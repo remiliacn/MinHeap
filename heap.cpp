@@ -67,6 +67,11 @@ int DeleteMin(Heap *h, int flag){
     h->pointer[0].key = h->pointer[size - 1].key;
     h->size -= 1;
     constructMinHeap(*h, 0);
+
+    if (flag == 2){
+        printHeap(*h);
+    }
+
     return tempMin;
 }
 

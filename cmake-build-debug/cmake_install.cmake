@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/remilia/CLionProjects/MinHeap
+# Install script for directory: E:/ASU/CSE_310/Projects/Projects1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/remilia/CLionProjects/MinHeap/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/ASU/CSE_310/Projects/Projects1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

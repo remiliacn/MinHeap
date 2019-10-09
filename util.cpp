@@ -66,7 +66,10 @@ int main(){
 
                     } catch (invalid_argument &){
                         cout << "Invalid size, it should be a number." << endl;
+                    } catch (out_of_range &) {
+                        cout << "Your input is too big for my program to handle :(." << endl;
                     }
+
                 }
 
                 break;
@@ -199,12 +202,10 @@ void constructMinHeap(Heap h, int num){
     int size = h.size;
     int left = leftNode(num);
     int right = rightNode(num);
-    int min;
+    int min = num;
 
     if (left < size && h.pointer[left].key < h.pointer[num].key){
         min = left;
-    } else{
-        min = num;
     }
 
     if (right < size && h.pointer[right].key < h.pointer[min].key){
@@ -213,12 +214,7 @@ void constructMinHeap(Heap h, int num){
 
     if (min != num){
         swap(&h.pointer[num].key, &h.pointer[min].key);
-    }
-
-    if (num % 2 == 0){
-        constructMinHeap(h, (num - 2) / 2);
-    } else{
-        constructMinHeap(h, (num - 1) / 2);
+        constructMinHeap(h, min);
     }
 }
 
