@@ -11,6 +11,8 @@ E:/ASU/CSE_310/Projects/Projects1/heap.h
 E:/ASU/CSE_310/Projects/Projects1/util.cpp
 iostream
 -
+stdexcept
+-
 string
 -
 fstream

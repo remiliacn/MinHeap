@@ -153,16 +153,21 @@ int main(){
                 if (!init){
                     cout << "You need to initialize the heap before using this function." << endl;
                 } else{
-                    flag = str[2] - '0';
-                    if ((flag == 2 || flag == 1) && str[3] == ' '){
-                        cout << "Illegal flag input." << endl;
+                    if (length < 3){
+                        cout << "Invalid syntax." << endl;
                     } else{
-                        int tempKey = DeleteMin(&h, flag);
-                        //check if deleteMin() encountered an error.
-                        if (tempKey != -1){
-                            cout << "deleted key was: " << tempKey << endl;
+                        flag = str[2] - '0';
+                        if ((flag == 2 || flag == 1) && str[3] == ' '){
+                            cout << "Illegal flag input." << endl;
+                        } else{
+                            int tempKey = DeleteMin(&h, flag);
+                            //check if deleteMin() encountered an error.
+                            if (tempKey != -1){
+                                cout << "deleted key was: " << tempKey << endl;
+                            }
                         }
                     }
+
                 }
                 break;
 
@@ -224,7 +229,7 @@ void swap(int* x, int* y){
  * @return {int} -> Parent node's position.
  */
 int parentIdx(int num){
-    return (num) / 2;
+    return (num - 1) / 2;
 }
 
 /**
@@ -233,7 +238,7 @@ int parentIdx(int num){
  * @return {int} -> Left node's position.
  */
 int leftNode(int num){
-    return 2 * num ;
+    return 2 * num + 1;
 }
 
 /**
@@ -242,7 +247,7 @@ int leftNode(int num){
  * @return {int} -> Right node's position.
  */
 int rightNode(int num){
-    return 2 * num + 1;
+    return 2 * num + 2;
 }
 
 /**
